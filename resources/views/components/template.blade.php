@@ -7,10 +7,14 @@
     <title>Document</title>
     <title>@yield('name')</title>
     @vite('resources/css/app.css')
+    <link rel="icon" href="images/icon.png">
+
+
 
 </head>
-<body class="bg-[#fffef2]">
+<body class="bg-[#fbfbfb]">
     @include('components/navbar')
+
     @yield('content')
     @include('components/footer')
 
