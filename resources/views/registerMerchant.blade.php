@@ -10,7 +10,7 @@
 
         <div class="col-span-1 bg-[#e8f7f4] rounded-3xl overflow-hidden  "">
             <div class="overflow-hidden">
-                <img class="rounded-3xl" src="images/registerCustomer.png" alt="">
+                <img class="rounded-3xl" src="images/registerMerchant.png" alt="">
 
             </div>
 

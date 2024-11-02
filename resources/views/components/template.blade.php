@@ -13,10 +13,14 @@
 
 </head>
 <body class="bg-[#fbfbfb]">
-    @include('components/navbar')
-
+    @if(request()->is('login'))
+    @elseif(request()->is('/'))
+            @include('components.navbar')
+            @include('components/footer')
+    @elseif (request()->is('registerCustomer'))
+    @endif
     @yield('content')
-    @include('components/footer')
+
 
 </body>
 </html>

@@ -19,7 +19,7 @@
         </div>
         <div>
             <ul class="flex gap-[5px]">
-                <li><a href=""><img class="h-[40px] m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/Profile.png" alt=""></a></li>
+                <li><a href="/login"><img class="h-[40px] m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/Profile.png" alt=""></a></li>
                 <li><a href=""><img class="h-[40px] m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/cart.png" alt=""></a></a></li>
             </ul>
         </div>
