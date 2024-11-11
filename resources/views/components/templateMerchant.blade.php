@@ -8,7 +8,7 @@
     <title>@yield('name')</title>
     @vite('resources/css/app.css')
     <link rel="icon" href="images/icon.png">
-        
+
 
 
 </head>
@@ -19,14 +19,18 @@
             @include('components/footer')
     @elseif (request()->is('registerCustomer'))
     @elseif (request()->is('dashboardMerchant'))
-            @include('components.navbar')
+            @include('components.navbarMerchant')
+            @include('components/sidebar')
             @include('components/footer')
+    @elseif (request()->is('pesananBaru'))
+        @include('components.navbarMerchant')
+        @yield('content')
+        @include('components/sidebar')
+
+        @include('components/footer')
     @endif
     @yield('content')
 
-    @if(request()->is('dashboardMerchant'))
-            @include('components/sidebar')
-    @endif
 
 </body>
 </html>

@@ -3,6 +3,10 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PesananBaruController;
+use App\Http\Controllers\PasarkanProdukController;
+use App\Http\Controllers\ListProdukController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -29,3 +33,17 @@ Route::get('/registerMerchant', function () {
     return view('registerMerchant');
 });
 
+Route::get('/dashboardMerchant', function () {
+    return view('dashboardMerchant');
+})->name('dashboard');
+
+// Rute untuk Pesanan Baru
+Route::get('/pesananBaru', [pesananBaruController::class, 'index'])->name('pesananBaru');
+
+// Rute untuk Pasarkan Produk
+Route::get('/pasarkanProduk', [pasarkanProdukController::class, 'index'])->name('pasarkanProduk');
+
+// Rute untuk List Produk
+Route::get('/listProduk', [listProdukController::class, 'index'])->name('listProduk');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
