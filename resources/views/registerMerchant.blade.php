@@ -1,5 +1,5 @@
 @extends('components/template')
-@section('title','registerCustomer')
+@section('title','Gomikro Register')
 
 
 @section('content')
