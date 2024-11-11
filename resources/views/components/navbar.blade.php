@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <nav class="border-2 px-[24px] py-[10px]  top-[0]  bg-[#fbfbfb] text-black sticky ">
+=======
+<nav class="px-[24px] py-[10px]  top-[0]  bg-[#fbfbfb] text-black sticky ">
+>>>>>>> 5d01a381b805797e62b87e0f15d768a57fa16144
     <div class="flex items-center justify-between ">
         <a class="" href=""><img class="h-[40px]" src="images/navLogo.png" alt="Logo GoMikro"></a>
         <div class="border-[2px] items-center w-[420px]  grid grid-cols-12 bg-white rounded-lg py-[5px] px-[5px]">
@@ -19,8 +23,36 @@
         </div>
         <div>
             <ul class="flex gap-[5px]">
-                <li><a href="/login"><img class="h-[40px] m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/Profile.png" alt=""></a></li>
-                <li><a href=""><img class="h-[40px] m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/cart.png" alt=""></a></a></li>
+                <div class="relative group">
+                    <li>
+                        @if (Auth::check())
+                            <!-- Logout Button -->
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="relative">
+                                    <img class="h-[40px] w-[40px] group m-[5px] group-hover:hidden hover:bg-[#f0f3f7] hover:rounded-lg" src="images/logout.png" alt="Logout">
+                                    <img class="h-[40px] w-[40px] hidden group-hover:block m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/logoutRed.png" alt="Logout">
+                                </button>
+                            </form>
+
+                        @else
+                            <!-- Profile Button -->
+                            <a href="/login">
+                                <img class="h-[40px] group m-[5px] group-hover:hidden hover:bg-[#f0f3f7] hover:rounded-lg" src="images/Profile.png" alt="Profile">
+                            </a>
+                            <a href="/login">
+                                <img class="h-[40px] hidden group-hover:block m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/ProfileGreen.png" alt="Profile Hover">
+                            </a>
+                        @endif
+                    </li>
+                </div>
+
+                <div class="relative group">
+                    <li><a href=""><img class="h-[40px] group m-[5px] group-hover:hidden hover:bg-[#f0f3f7] hover:rounded-lg" src="images/cart.png" alt=""></a>
+                        <a href="/cart"><img class="h-[40px] hidden group-hover:block m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/cartGreen.png" alt=""></a>
+                    </li>
+                </div>
+
             </ul>
         </div>
 
