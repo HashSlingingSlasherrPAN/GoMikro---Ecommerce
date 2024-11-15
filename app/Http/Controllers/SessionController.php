@@ -30,6 +30,9 @@ class SessionController extends Controller
      function cart(){
         return view('cart');
      }
+     function profilePage(){
+        return view('profile');
+     }
 
 
      function registerMerchant(){
@@ -97,7 +100,7 @@ class SessionController extends Controller
         ];
 
         if(Auth::attempt($infoLogin)){
-            return redirect()->route('session')->with('success', 'Login Berhasil');
+            return redirect()->route('session')->with('success', 'Login Berhasil Selamat Datang'.Auth::user()->name);
         }else{
             return redirect()->route('login')->with('error', 'Login Gagal');
         }

@@ -33,14 +33,29 @@
 
                         @else
                             <!-- Profile Button -->
-                            <a href="/login">
-                                <img class="h-[40px] group m-[5px] group-hover:hidden hover:bg-[#f0f3f7] hover:rounded-lg" src="images/Profile.png" alt="Profile">
-                            </a>
-                            <a href="/login">
-                                <img class="h-[40px] hidden group-hover:block m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/ProfileGreen.png" alt="Profile Hover">
-                            </a>
+
                         @endif
+
                     </li>
+                </div>
+                <div>
+                    @if (Auth::check())
+                    <a href="/profile">
+                        <img class="h-[40px] group m-[5px] group-hover:hidden hover:bg-[#f0f3f7] hover:rounded-lg" src="images/Profile.png" alt="Profile">
+                    </a>
+                    <a href="/profile">
+                        <img class="h-[40px] hidden group-hover:block m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/ProfileGreen.png" alt="Profile Hover">
+                    </a>
+                    @else
+                    <a href="/login">
+                        <img class="h-[40px] group m-[5px] group-hover:hidden hover:bg-[#f0f3f7] hover:rounded-lg" src="images/Profile.png" alt="Profile">
+                    </a>
+                    <a href="/login">
+                        <img class="h-[40px] hidden group-hover:block m-[5px] hover:bg-[#f0f3f7] hover:rounded-lg" src="images/ProfileGreen.png" alt="Profile Hover">
+                    </a>
+
+                    @endif
+
                 </div>
 
                 <div class="relative group">
