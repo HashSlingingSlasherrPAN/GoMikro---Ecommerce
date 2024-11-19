@@ -36,9 +36,7 @@ Route::resource('customer', CustomerController::class);
 Route::get('/session', [SessionController::class, 'index'])->name('session');
 Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
 Route::post('/login', [SessionController::class, 'login'])->name('login')->middleware(isGuest::class);
-
-
-
+Route::get('/profile', [SessionController::class, 'profilePage'])->name('profile');
 Route::get('/register', [SessionController::class, 'register'])->name('register');
 Route::get('/cart', [SessionController::class, 'cart'])->name('cart');
 Route::get('/registerCustomer', [SessionController::class, 'registerCustomer'])->name('registerCustomer');
