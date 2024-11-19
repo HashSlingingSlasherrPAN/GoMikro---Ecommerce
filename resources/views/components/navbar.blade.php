@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<nav class="border-2 px-[24px] py-[10px]  top-[0]  bg-[#fbfbfb] text-black sticky ">
-=======
 <nav class="px-[24px] py-[10px]  top-[0]  bg-[#fbfbfb] text-black sticky ">
->>>>>>> 5d01a381b805797e62b87e0f15d768a57fa16144
     <div class="flex items-center justify-between ">
         <a class="" href=""><img class="h-[40px]" src="images/navLogo.png" alt="Logo GoMikro"></a>
         <div class="border-[2px] items-center w-[420px]  grid grid-cols-12 bg-white rounded-lg py-[5px] px-[5px]">
