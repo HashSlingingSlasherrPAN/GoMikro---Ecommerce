@@ -7,10 +7,22 @@
     <title>@yield('title', 'Default Title')</title>
     @vite('resources/css/app.css')
     <link rel="icon" href="images/icon.png">
-
+        
 
 
 </head>
+{{-- <body class="">
+    @if(request()->is('login'))
+    @elseif(request()->is('/'))
+            @include('components.navbar')
+            @include('components/footer')
+    @elseif (request()->is('registerCustomer'))
+    @elseif (request()->is('dashboardMerchant'))
+            @include('components.navbar')
+            @include('components/footer') --}}
+
+{{-- NOPAN TOLOGN BERIKAN PENJELASAN YANG MANA --}}
+
 <body class="bg-[#fbfbfb]">
     @include('shared.errorMessage')
     @include('shared.successMessage')
@@ -43,6 +55,9 @@
 
     @yield('content')
 
+    @if(request()->is('dashboardMerchant'))
+            @include('components/sidebar')
+    @endif
 
 </body>
 </html>

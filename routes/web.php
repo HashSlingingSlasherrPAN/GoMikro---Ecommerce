@@ -1,10 +1,15 @@
 <?php
 
+
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\pesananBaruController;
+use App\Http\Controllers\listProdukController;
+use App\Http\Controllers\pasarkanProdukController;
 use App\Http\Middleware\isGuest;
 use App\Http\Middleware\isLogin;
+
 
 
 Route::redirect('/', '/dashboardCustomer');
@@ -15,9 +20,11 @@ Route::get('/productDetail', function () {
 });
 
 
+
+
 Route::get('/register', function () {
     return view('register');
-});
+})->name('register');
 Route::get('/registerCustomer', function () {
     return view('registerCustomer');
 });
@@ -38,3 +45,8 @@ Route::get('/cart', [SessionController::class, 'cart'])->name('cart');
 Route::get('/registerCustomer', [SessionController::class, 'registerCustomer'])->name('registerCustomer');
 Route::get('/registerMerchant', [SessionController::class, 'registerMerchant'])->name('registerMerchant');
 Route::post('/create', [SessionController::class, 'create'])->name('create');
+Route::get('/dashboardMerchant', [SessionController::class, 'dashboardMerchant'])->name('dashboardMerchant');
+
+Route::get('/pesananBaru', [pesananBaruController::class, 'index'])->name('pesananBaru');
+Route::get('/pasarkanProduk', [pasarkanProdukController::class, 'index'])->name('pasarkanProduk');
+Route::get('/listProduk', [listProdukController::class, 'index'])->name('listProduk');

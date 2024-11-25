@@ -2,33 +2,40 @@
 @section('title', 'Gomikro login')
 
 @section('content')
-<div class="mx-[50px] my-[20px]  bg-transparent text-black">
-    <div class="flex items-center  justify-center">
-        <img class="w-[200px] " src="images/navLogo.png" alt="">
+<div class="mx-[50px] my-[20px] bg-transparent text-black">
+    <div class="flex items-center justify-center">
+        <img class="w-[200px]" src="{{ asset('images/navLogo.png') }}" alt="Logo">
     </div>
-    <div class="grid-cols-2 grid">
-        <div class="col-span-1  ">
-            <div class="grid grid-cols-8   ">
-                <div class="col-span-1">
 
+    @if(session('status'))
+        <div class="text-center text-green-600 font-medium mb-4">
+            {{ session('status') }}
+        </div>
+    @endif
+
+    @if($errors->any())
+        <div class="text-center text-red-600 font-medium mb-4">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <div class="grid grid-cols-2">
+        <div class="col-span-1">
+            <div class="grid grid-cols-8">
+                <div class="col-span-1"></div>
+                <div class="col-span-1"></div>
+                <div class="col-span-6 py-[140px]">
+                    <img class="relative items-center justify-center align-center" src="{{ asset('images/poster1.png') }}" alt="Poster">
                 </div>
-                <div class="col-span-1 ">
-
-                </div>
-                <div class="col-span-6 py-[140px] ">
-                    <img class="relative items-center justify-center align-center" src="images/poster1.png" alt="">
-
-                </div>
-
             </div>
-
-
         </div>
         <div class="col-span-1">
-            <div class="grid grid-cols-8 ">
-                <div class="col-span-2">
-
-                </div>
+            <div class="grid grid-cols-8">
+                <div class="col-span-2"></div>
                 <div class="col-span-4">
                     <div class="py-[40px] text-[1rem] font-[400]  grid gap-[12px]   px-[40px] rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] my-[100px]">
                         <form class="grid gap-[8px]" action="{{ route('login') }}" method="POST">
@@ -60,16 +67,9 @@
                     </div>
 
                 </div>
-                <div class="col-span-2">
-
-                </div>
-
+                <div class="col-span-2"></div>
             </div>
-
-
         </div>
-
     </div>
-
 </div>
 @endsection
