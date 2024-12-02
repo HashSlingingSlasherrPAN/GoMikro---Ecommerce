@@ -16,10 +16,15 @@ class isGuest
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check()){
-            return redirect()->route('dashboardCustomer')->with('error', 'Anda Sudah Login ' . Auth::user()->name);
+        if (Auth::check()) {
+            // Arahkan berdasarkan role pengguna
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('dashboardAdmin')->with('info', 'Anda sudah login sebagai Admin.');
+            } elseif (Auth::user()->role === 'customer') {
+                return redirect()->route('dashboardCustomer')->with('info', 'Anda sudah login sebagai Customer.');
+            }
         }
-        return $next($request);
 
+        return $next($request);
     }
 }

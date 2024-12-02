@@ -5,30 +5,52 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-    public function index(Request $request){
+    function index(Request $request){
         return view('login');
     }
 
-    public function authenticate(Request $request): RedirectResponse
-    {
-        $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
+    function login(Request $request){
+
+        Session::flash('email', $request->email);
+
+        $request->validate([
+            // 'name'=>'required',
+            'email' => 'required',
+            'password'=>'required'
+
+
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        $infoLogin = [
+            // 'name'=>$request->name,
+            'email' => $request->email,
+            'password'=>$request->password
+        ];
 
-            return redirect()->route('dashboard');
+           // Cek kredensial
+        if (Auth::attempt($infoLogin)) {
+            $user = Auth::user(); // Mendapatkan data pengguna yang login
+
+            // Periksa role dan arahkan ke dashboard yang sesuai
+            if ($user->role === 'admin') {
+                return redirect()->route('dashboardAdmin')->with('success', 'Login Berhasil! Selamat Datang Admin, ' . $user->name);
+            } elseif ($user->role === 'customer') {
+                return redirect()->route('dashboardCustomer')->with('success', 'Login Berhasil! Selamat Datang ' . $user->name);
+            } else {
+                // Jika role tidak dikenali
+                Auth::logout();
+                return redirect()->route('login')->with('error', 'Role pengguna tidak valid.');
+            }
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
-    }
+        // Jika kredensial salah
+        return redirect()->route('login')->with('error', 'Email atau password salah.');
+
+        }
 
     public function logout(Request $request): RedirectResponse
     {

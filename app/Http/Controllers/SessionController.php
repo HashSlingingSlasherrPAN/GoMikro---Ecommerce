@@ -39,9 +39,10 @@ class SessionController extends Controller
      }
 
 
-     function registerMerchant(){
-        return view('registerMerchant');
-     }
+    //  function registerMerchant(){
+
+    //     return view('registerMerchant');
+    //  }
      function create(Request $request){
         Session::flash('name', $request->name);
 
@@ -90,7 +91,7 @@ class SessionController extends Controller
         Session::flash('email', $request->email);
 
         $request->validate([
-            'name'=>'required',
+            // 'name'=>'required',
             'email' => 'required',
             'password'=>'required'
 
@@ -98,18 +99,31 @@ class SessionController extends Controller
         ]);
 
         $infoLogin = [
-            'name'=>$request->name,
+            // 'name'=>$request->name,
             'email' => $request->email,
             'password'=>$request->password
         ];
 
-        if(Auth::attempt($infoLogin)){
-            return redirect()->route('session')->with('success', 'Login Berhasil Selamat Datang'.Auth::user()->name);
-        }else{
-            return redirect()->route('login')->with('error', 'Login Gagal');
+           // Cek kredensial
+        if (Auth::attempt($infoLogin)) {
+            $user = Auth::user(); // Mendapatkan data pengguna yang login
+
+            // Periksa role dan arahkan ke dashboard yang sesuai
+            if ($user->role === 'admin') {
+                return redirect()->route('dashboardMerchant')->with('success', 'Login Berhasil! Selamat Datang Admin, ' . $user->name);
+            } elseif ($user->role === 'customer') {
+                return redirect()->route('customer.dashboard')->with('success', 'Login Berhasil! Selamat Datang ' . $user->name);
+            } else {
+                // Jika role tidak dikenali
+                Auth::logout();
+                return redirect()->route('login')->with('error', 'Role pengguna tidak valid.');
+            }
         }
 
-     }
+        // Jika kredensial salah
+        return redirect()->route('login')->with('error', 'Email atau password salah.');
+
+        }
 
 
 }
