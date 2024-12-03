@@ -3,22 +3,15 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\RoleMiddleware;
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
+   /**
+     * Configure the application's route middleware.
      */
-    public function register(): void
+    public function configureMiddleware(): void
     {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        //
+        Route::middleware('role', RoleMiddleware::class);
     }
 }

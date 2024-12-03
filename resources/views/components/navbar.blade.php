@@ -1,4 +1,4 @@
-<nav class="px-[24px] py-[10px]  top-[0]  bg-[#fbfbfb] text-black sticky ">
+<nav class="px-[24px] py-[10px] z-index-999   top-[0]  bg-[#fbfbfb] sticky ">
     <div class="flex items-center justify-between ">
         <a class="" href=""><img class="h-[40px]" src="images/navLogo.png" alt="Logo GoMikro"></a>
         <div class="border-[2px] items-center w-[420px]  grid grid-cols-12 bg-white rounded-lg py-[5px] px-[5px]">

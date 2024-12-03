@@ -16,7 +16,7 @@ class SessionController extends Controller
 
         return view("dashboard", compact('userName'));
       }
-    
+
     function dashboardMerchant() {
         return view("dashboardMerchant");
     }

@@ -11,7 +11,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     // Specify the table name
-    protected $table = 'user'; // Change this to your table name if it's different
+    protected $table = 'users'; // Change this to your table name if it's different
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +22,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'phone',
+        'role'
     ];
 
     /**

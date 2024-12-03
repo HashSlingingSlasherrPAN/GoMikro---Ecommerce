@@ -1,52 +1,29 @@
 <?php
 
-
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\pesananBaruController;
-use App\Http\Controllers\listProdukController;
-use App\Http\Controllers\pasarkanProdukController;
-use App\Http\Middleware\isGuest;
-use App\Http\Middleware\isLogin;
+use App\Http\Controllers\DashboardCustomerController;
 
+// Public Routes
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login'); // Login Form
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit'); // Login Submit
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register'); // Registration Form
+Route::post('/register', [RegisterController::class, 'register'])->name('register.submit'); // Registration Submit
 
+// Authenticated Routes
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('dashboardAdmin');
+    })->name('adminDashboard');
 
-Route::redirect('/', '/dashboardCustomer');
-Route::get('/dashboardCustomer', [CustomerController::class, 'dashboardCustomer'])->name('/dashboardCustomer');
-Route::get('/productDetail', [CustomerController::class, 'productDetail'])->name('/productDetail');
-Route::get('/productDetail', function () {
-    return view('productDetail');
 });
 
+Route::middleware(['auth', 'role:customer'])->group(function () {
+  
+    Route::get('/dashboardCustomer', [DashboardCustomerController::class, 'dashboardCustomer'])->name('dashboardCustomer');
 
-
-
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
-Route::get('/registerCustomer', function () {
-    return view('registerCustomer');
 });
-Route::get('/registerMerchant', function () {
-    return view('registerMerchant');
-});
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/dashbordCustomer',[CustomerController::class, 'dashboardCustomer'])->name('dashboardCustomer')->middleware([isLogin::class]);
-Route::resource('customer', CustomerController::class);
-Route::get('/session', [SessionController::class, 'index'])->name('session');
-Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
-Route::post('/login', [SessionController::class, 'login'])->name('login')->middleware(isGuest::class);
-Route::get('/profile', [SessionController::class, 'profilePage'])->name('profile');
-Route::get('/register', [SessionController::class, 'register'])->name('register');
-Route::get('/cart', [SessionController::class, 'cart'])->name('cart');
-Route::get('/registerCustomer', [SessionController::class, 'registerCustomer'])->name('registerCustomer');
-Route::get('/registerMerchant', [SessionController::class, 'registerMerchant'])->name('registerMerchant');
-Route::post('/create', [SessionController::class, 'create'])->name('create');
-Route::get('/dashboardMerchant', [SessionController::class, 'dashboardMerchant'])->name('dashboardMerchant');
 
-Route::get('/pesananBaru', [pesananBaruController::class, 'index'])->name('pesananBaru');
-Route::get('/pasarkanProduk', [pasarkanProdukController::class, 'index'])->name('pasarkanProduk');
-Route::get('/listProduk', [listProdukController::class, 'index'])->name('listProduk');
+// Logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

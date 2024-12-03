@@ -7,7 +7,7 @@
     <title>@yield('title', 'Default Title')</title>
     @vite('resources/css/app.css')
     <link rel="icon" href="images/icon.png">
-        
+
 
 
 </head>
@@ -32,14 +32,26 @@
         @include('components.navbar')
         @elseif(request()->is('cart'))
         @include('components.navbar')
-
         @include('components.cartnav')
 
 
 
         @endif
     @else
-    @include('components.loginSuggestion')
+        @if (request()->is('cart'))
+        @include('components.navbar')
+        @include('components.cartnav')
+
+        @elseif (request()->is('session'))
+
+        @include('components.navbar')
+        @elseif(request()->is('dashboardCustomer'))
+        @include('components.loginSuggestion')
+
+
+        @endif
+
+
     @endif
 
     @if(request()->is('login'))
@@ -51,7 +63,10 @@
     @elseif(request()->is('dashboardCustomer'))
      @include('components.navbar')
 
+
+
     @endif
+
 
     @yield('content')
 
