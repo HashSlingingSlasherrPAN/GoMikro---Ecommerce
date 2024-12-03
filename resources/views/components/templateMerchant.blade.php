@@ -18,7 +18,7 @@
             @include('components.navbar')
             @include('components/footer')
     @elseif (request()->is('registerCustomer'))
-    @elseif (request()->is('dashboardMerchant'))
+    @elseif (request()->is('dashboardAdmin'))
             @include('components.navbarMerchant')
             @include('components/sidebar')
             @include('components/footer')
