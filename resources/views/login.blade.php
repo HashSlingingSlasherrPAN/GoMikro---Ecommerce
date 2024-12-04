@@ -40,14 +40,14 @@
                     <div class="py-[40px] text-[1rem] font-[400]  grid gap-[12px]   px-[40px] rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] my-[100px]">
                         <form class="grid gap-[8px]" action="{{ route('login') }}" method="POST">
                             @csrf
-                            <div>
+                            {{-- <div>
                                 <label class="text-gray-900" for="name">Username :</label><br>
                                 <input class="border  border-gray-300   focus:outline-none focus:ring-[1px]  focus:ring-[#02B18A]  my-[4px] rounded-md w-full bg-gray-50 py-[8px] px-[8px] " required type="text" name="name" id="name" placeholder="Masukan username">
                             </div>
-                          
+    
                             <div>
                                 <label class="text-gray-900"  for="password">Password :</label><br>
-                                <input class="border  border-gray-300  focus:outline-none focus:ring-[1px] focus:ring-[#02B18A]  my-[4px] rounded-md w-full bg-gray-50 py-[8px] px-[8px]" type="text" name="password" id="password"  placeholder="Masukan Password">
+                                <input class="border  border-gray-300  focus:outline-none focus:ring-[1px] focus:ring-[#02B18A]  my-[4px] rounded-md w-full bg-gray-50 py-[8px] px-[8px]" type="password" name="password" id="password"  placeholder="Masukan Password">
                             </div>
                             <p class="text-gray-400">belum punya akun? <a class="font-[500] text-[#00AC73] hover:text-[#19b894] text-[1rem]" href="/register">daftar</a></p>
                             <div>

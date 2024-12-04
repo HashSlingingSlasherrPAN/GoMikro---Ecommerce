@@ -5,6 +5,8 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardCustomerController;
 
+
+
 // Public Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login'); // Login Form
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit'); // Login Submit
@@ -20,7 +22,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:customer'])->group(function () {
-  
+
     Route::get('/dashboardCustomer', [DashboardCustomerController::class, 'dashboardCustomer'])->name('dashboardCustomer');
 
 });
