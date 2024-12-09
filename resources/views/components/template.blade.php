@@ -28,11 +28,13 @@
     @include('shared.successMessage')
     @if (Auth::check())
 
-        @if (request()->is('session'))
+        @if (request()->is('admin/customer'))
         @include('components.navbar')
         @elseif(request()->is('cart'))
         @include('components.navbar')
         @include('components.cartnav')
+        @elseif(request()->is('dashboardAdmin'))
+        @include('components.navbar')
 
 
 

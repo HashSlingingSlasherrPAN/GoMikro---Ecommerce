@@ -22,7 +22,7 @@
                     <img class="w-[200px] pt-[52px]" src="{{ asset('images/navLogo.png') }}" alt="Logo">
 
                     <!-- Registration Form -->
-                    <form class="grid gap-[8px]" action="{{ route('register.submit') }}" method="POST">
+                    <form class="grid gap-[8px]" action="{{ route('register') }}" method="POST">
                         @csrf
                         <!-- Name -->
                         <div>

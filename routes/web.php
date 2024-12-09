@@ -1,59 +1,27 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardCustomerController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\SessioningController;
 
-
-// Public Routes
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login'); // Login Form
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit'); // Login Submit
-Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register'); // Registration Form
-Route::post('/register', [RegisterController::class, 'register'])->name('register.submit'); // Registration Submit
-
-// Authenticated Routes
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('dashboardAdmin');
-    })->name('adminDashboard');
-
-});
-
-Route::middleware(['auth', 'role:customer'])->group(function () {
-
-    Route::get('/dashboardCustomer', [DashboardCustomerController::class, 'dashboardCustomer'])->name('dashboardCustomer');
-
-});
-
-// Logout
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/registerMerchant', function () {
-    return view('registerMerchant');
-});
-Route::get('/login', function () {
-    return view('login');
-});
-//Route::get('/dashbordCustomer',[CustomerController::class, 'dashboardCustomer'])->name('dashboardCustomer')->middleware([isLogin::class]);
-
-
-//Middleware Admin
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboardAdmin', [DashboardController::class, 'index'])->name('dashboardAdmin');
-    Route::prefix('admin')->name('admin.')->group(function() {
-        Route::resource('products', ProductController::class);
-        Route::resource('categories', CategoryController::class);
-        Route::resource('orders', OrderController::class);
-    });
-});
-
-//Middlerware Guest
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::post('/login', [LoginController::class, 'login']);
+
+    Route::post('/login', [SessioningController::class, 'login'])->name('login');
+    Route::get('/login', [SessioningController::class, 'pageLogin'])->name('login');
+    Route::get('/register', [SessioningController::class, 'pageRegister'])->name('register');
+    Route::post('/register', [SessioningController::class, 'register'])->name('register');
+
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboardAdmin', [AdminController::class, 'index'])->name('dashboardAdmin');
+    Route::get('/admin/customer', [AdminController::class, 'customer'])->middleware('user_access:customer');
+    Route::get('/admin/admin', [AdminController::class, 'admin'])->middleware('user_access:admin');
+
+    Route::post('/logout', [SessioningController::class, 'logout'])->name('logout');
+
+});
+
+
+
+Route::get('/dashboardCustomer', [SessioningController::class, 'index'])->name('dashboardCustomer');
