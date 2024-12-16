@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
 
+    public function customer()
+    {
         $products = Product::all();
 
-        return view('admin.products.index', compact('products'));
+        return view('dashboardCustomer', compact('products'));
     }
+
 
     public function create()
     {
@@ -35,7 +36,7 @@ class ProductController extends Controller
             'image' => 'nullable|image|max:2048',
             'category_id' => 'required|exists:categories,id',
         ]);
-        
+
 
         $data = $request->all();
 
@@ -64,12 +65,12 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'image' => 'nullable|image|max:2048',
-            'categories' => 'required|array', 
+            'categories' => 'required|array',
             'categories.*' => 'exists:categories,id',
         ]);
 
         $data = $request->all();
-        
+
         if ($request->hasFile('image')) {
             if ($product->image) {
                 Storage::delete('public/' . $product->image);

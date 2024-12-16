@@ -19,6 +19,6 @@ class UserAccess
         if (auth()->user()->role == $role) {
             return $next($request);
         }
-        return response()->json(['message' => 'Unauthorized'], 403);
+        return response()->json(['Warning' => 'Akses tidak diizinkan'], 403);
     }
 }

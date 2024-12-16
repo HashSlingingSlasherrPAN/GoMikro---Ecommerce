@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use App\Models\Cart;
 
 class SessioningController extends Controller
 {
@@ -36,7 +39,7 @@ class SessioningController extends Controller
          if ($user->role == 'admin') {
              return redirect('admin/admin')->with('success', 'Selamat datang Admin');
          } elseif ($user->role == 'customer') {
-             return redirect('admin/customer')->with('success', 'Login Berhasil, Selamat datang ' . $user->name . '!');
+             return redirect('customer/dashboardCustomer')->with('success', 'Login Berhasil, Selamat datang ' . $user->name . '!');
          }
      }
 
@@ -63,6 +66,23 @@ class SessioningController extends Controller
     return redirect()->route('login')->with('success', 'Register Berhasil, Silahkan Login');
 }
 
+public function mycart(){
+
+    if (Auth::id()){
+
+        $user = Auth::user();
+        $userid = $user->id;
+        $count = Cart::where('user_id',$userid)->count();
+        $cart = Cart::where('user_id',$userid)->get();
+
+    }else{
+        $count = '';
+    }
+    return view('mycart', compact('count','cart'));
+}
+
+
+
 
  public function logout(Request $request)
  {
@@ -73,7 +93,16 @@ class SessioningController extends Controller
  }
 
 
+public function productDetail($id){
+    $products = Product::all();
+    $user = Auth::user();
+    $userid = $user->id;
+    $count = Cart::where('user_id',$userid)->count();
 
+
+    $data = Product::find($id);
+    return view('productDetail', compact('data', 'count'));
+}
 
  function pageLogin() {
      return view('login');
