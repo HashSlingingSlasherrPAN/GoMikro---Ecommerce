@@ -29,15 +29,14 @@ class SessioningController extends Controller
      ]);
 
 
-     $credentials = $request->only('email', 'password'); // Use email, not username
+     $credentials = $request->only('email', 'password'); 
 
      if (Auth::attempt($credentials)) {
-         // Get the authenticated user
+
          $user = Auth::user();
 
-         // Redirect based on user role
          if ($user->role == 'admin') {
-             return redirect('admin/admin')->with('success', 'Selamat datang Admin');
+             return redirect('dashboardAdmin')->with('success', 'Selamat datang Admin');
          } elseif ($user->role == 'customer') {
              return redirect('customer/dashboardCustomer')->with('success', 'Login Berhasil, Selamat datang ' . $user->name . '!');
          }
@@ -81,7 +80,20 @@ public function mycart(){
     return view('mycart', compact('count','cart'));
 }
 
+public function profile() {
+    if (Auth::id()){
 
+        $user = Auth::user();
+        $userid = $user->id;
+        $count = Cart::where('user_id',$userid)->count();
+        $cart = Cart::where('user_id',$userid)->get();
+
+    }else{
+        $count = '';
+    }
+    return view('profile', compact('count','cart'));
+    
+}
 
 
  public function logout(Request $request)

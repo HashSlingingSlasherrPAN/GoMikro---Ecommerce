@@ -3,6 +3,7 @@
 @section('title', 'Edit Produk')
 
 @section('content')
+
 <div class="mx-[90px]">
     <h1 class="font-[500] my-[32px] text-[1.8rem]">Edit Kategori Produk</h1>
     
@@ -33,7 +34,6 @@
                     Simpan Perubahan
                 </button>
             </div>
-            
         </form>
     </div>
 </div>

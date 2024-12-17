@@ -23,6 +23,6 @@
     </div>
 
     <div class="w-full flex justify-center relative bottom-2">
-        <a href="{{ route('login') }}" class="bg-[#02b18a] text-white rounded-full py-2 px-4 w-[190px] text-center transform transition-transform hover:scale-110 transition duration-300">Logout</a>
+        <a href="{{ route('login') }}" class="bg-[#02b18a] text-white rounded-full py-2 px-4 w-[190px] text-center transform hover:scale-110 transition duration-300">Logout</a>
     </div>
 </aside>

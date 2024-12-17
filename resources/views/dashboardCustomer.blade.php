@@ -6,11 +6,11 @@
 
     <div class="grid grid-cols-4 gap-8">
         @foreach ($products as $product)
-        <div class="w-[300px]">
+        <div class="w-[300px] bg-[#fbfbfb] rounded-lg shadow-md">
             <a href="/productDetail/{{ $product->id }}">
                 <div>
-                    <img class="object-cover h-[300px] w-[300px]"
-                    src="{{ asset('products/' . $product->image) }}"
+                    <img class="object-cover h-[300px] w-[300px] rounded-lg "
+                    src="{{ asset('storage/' . $product->image) }}"
 
                          alt="{{ $product->name }}">
                 </div>

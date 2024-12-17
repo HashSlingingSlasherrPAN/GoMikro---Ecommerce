@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
 
-    public function customer()
+    public function index()
     {
         $products = Product::all();
 
-        return view('dashboardCustomer', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
 

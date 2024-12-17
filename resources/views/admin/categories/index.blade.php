@@ -2,48 +2,68 @@
 
 @section('title', 'Kategori Produk')
 @section('content')
-<div class="mx-[90px]">
-    <h1 class="font-[500] my-[32px] text-[1.8rem]">Kategori Produk</h1>
+<div class="w-full overflow-x-auto bg-[#fbfbfb] rounded-lg shadow-md">
+    <div class="flex justify-between">
+        <h1 class="text-3xl font-bold p-6">Kategori Produk</h1>
+
+         <!-- Button Tambah Produk -->
+        <a href="{{ route('admin.categories.create') }}" class="fixxed p-5 mr-5 group">
+            
+            <img 
+                src="{{ asset('images/addhover.png') }}" 
+                alt="Tambah Kategori Hover" 
+                class="w-10 h-10 group-hover:hidden"
+            >
+
+            <img 
+                src="{{ asset('images/add.png') }}" 
+                alt="Tambah Kategori" 
+                class="w-10 h-10 hidden group-hover:block"
+            >
+
+        </a>
+
+
+    </div>
     
-    <!-- Button Tambah Produk -->
-    <a href="{{ route('admin.categories.create') }}" class="inline-block bg-[#02B18A] text-white py-2 px-4 rounded hover:bg-[#019f70] mb-4">Tambah Kategori</a>
-    
+    <hr>
     <!-- Table Produk -->
-    <div class="overflow-x-auto">
-        <table class="min-w-full bg-white border border-gray-200 rounded-md shadow-md">
-            <thead class="bg-[#02B18A] text-white">
+    <div>
+        <table class="w-full table-auto border-separate border-spacing-0 overflow-hidden">
+            <thead>
                 <tr>
-                    <th class="py-2 px-4 border-b">Kategori Produk</th>
-                    <th class=" bg-white text-black py-2 px-4 border-b">Aksi</th>
+                    <th class="px-6 py-4 text-left rounded-tl-lg">Jenis Kategori</th>
+                    <th class="px-4 py-4 text-center rounded-tr-lg">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($categories as $category)
-                    <tr class="border-b hover:bg-gray-50">
-                        <td class="py-2 px-4">{{ $category->name }}</td>
+                    <tr class="group hover:bg-[#f0f3f7]">
+                        <!-- Kolom Kategori Produk -->
+                        <td class="px-6 py-4">{{ $category->name }}</td>
 
-                        <td class="py-2 px-4 flex space-x-2">
+                        <!-- Kolom Aksi -->
+                        <td class="px-6 py-4 text-center flex justify-center items-center gap-6">
                             <!-- Tombol Edit -->
-                            <a href="{{ route('admin.categories.edit', $category) }}" 
-                               class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-200">
+                            <a href="{{ route('admin.categories.edit', $category) }}" class="text-blue-500 hover:scale-110 transition-transform duration-300">
                                 Edit
                             </a>
-                        
+
                             <!-- Tombol Hapus -->
                             <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" 
-                                        class="bg-red-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-red-600 transition duration-200">
+                                <button type="submit" class="text-red-500 hover:scale-110 transition-transform duration-300">
                                     Hapus
                                 </button>
                             </form>
                         </td>
-                        
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
+
+
 @endsection
