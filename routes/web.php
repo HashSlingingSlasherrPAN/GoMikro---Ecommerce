@@ -33,7 +33,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('confirm_order', [CartController::class, 'confirm_order'])->middleware('user_access:customer');
     Route::post('/payments', [PaymentController::class, 'create'])->middleware('user_access:customer');
     Route::post('/webhook/midtrans', [PaymentController::class, 'webhook']);
-
     // Route::get('/dashboardCustomer', [ProductController::class, 'index'])->name('dashboardCustomer')->middleware('user_access:customer');
 
     Route::post('/logout', [SessioningController::class, 'logout'])->name('logout');

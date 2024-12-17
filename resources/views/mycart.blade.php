@@ -195,20 +195,22 @@
             if (data.snap_token) {
                 // Open SNAP payment pop-up
                 snap.pay(data.snap_token, {
-                    onSuccess: function(result) {
-                        alert('Payment Success!');
-                        console.log(result);
-                        window.location.reload();
-                    },
-                    onPending: function(result) {
-                        alert('Payment Pending...');
-                        console.log(result);
-                    },
-                    onError: function(result) {
-                        alert('Payment Failed!');
-                        console.log(result);
-                    }
-                });
+    onSuccess: function(result) {
+        alert('Payment Success!');
+        console.log(result);
+        // Redirect ke halaman mycart
+        window.location.href = '{{ url("/mycart") }}';
+    },
+    onPending: function(result) {
+        alert('Payment Pending...');
+        console.log(result);
+    },
+    onError: function(result) {
+        alert('Payment Failed!');
+        console.log(result);
+    }
+});
+
             } else {
                 alert('Failed to create payment.');
                 console.error(data);
