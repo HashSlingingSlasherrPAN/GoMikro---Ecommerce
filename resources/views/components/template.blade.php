@@ -45,6 +45,8 @@
         @elseif (request()->is('checkout'))
         @include('components.navbar')
         @include('components.checkoutNav')
+        @elseif (request()->is('search'))
+        @include('components.navbar')
 
 
 

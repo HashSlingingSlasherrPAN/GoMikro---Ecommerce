@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\DashboardCustomerController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\listProdukController;
 use App\Http\Controllers\SessioningController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\DashboardCustomerController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [DashboardCustomerController::class, 'index']);
@@ -37,9 +38,18 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/dashboardCustomer', [ProductController::class, 'index'])->name('dashboardCustomer')->middleware('user_access:customer');
 
     Route::post('/logout', [SessioningController::class, 'logout'])->name('logout');
+    
+    
+    Route::get('/dashboardCustomer', [SessioningController::class, 'index'])->name('dashboardCustomer');
+    Route::get('/list-produk', [ListProdukController::class, 'index'])->name('list.produk');
+    Route::get('/search', [ListProdukController::class, 'search'])->name('search');
+
 
 });
 
 
 Route::get('/dashboardCustomer', [ProductController::class, 'index']);
 
+// Route::get('/dashboardCustomer', [SessioningController::class, 'index'])->name('dashboardCustomer');
+Route::get('/dashboardCustomer', [CustomerController::class, 'dashboardCustomer']);
+Route::get('/search', [listProdukController::class, 'search'])->name('search');
