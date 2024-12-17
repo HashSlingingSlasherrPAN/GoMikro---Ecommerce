@@ -1,4 +1,4 @@
-<div class="swiper-container my-10 z-index-[19] relative">
+<div class="swiper-container my-10 z-index-[19]  relative">
     <div class="swiper-wrapper">
         <!-- Slide 1 -->
         <div class="swiper-slide">

@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
 
-    public function customer()
+    public function index()
     {
         $products = Product::all();
 
-        return view('dashboardCustomer', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
 
@@ -93,12 +93,6 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil dihapus.');
-    }
-
-    public function index()
-    {
-        // Logika untuk menampilkan data produk
-        return view('admin.products.index'); // Sesuaikan dengan lokasi file Blade
     }
 
 

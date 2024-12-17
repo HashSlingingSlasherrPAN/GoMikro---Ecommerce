@@ -13,7 +13,7 @@
             <a href="">
                 <div class="grid grid-cols-2">
                     <div class="col-span-1">
-                        <img class="w-[80px] h-[80px] object-cover" src="/products/{{ $cart->product->image }}" alt="">
+                        <img class="w-[80px] h-[80px] object-cover" src="{{ asset('storage/' . $cart->product->image) }} " alt="">
 
                     </div>
                     <div class="col-span-1 text-[0.9rem] font-[500]">
@@ -185,7 +185,7 @@
             },
             body: JSON.stringify({
                 price: {{ $value }},
-                item_name: 'Cart Items',
+                item_name: 'Item Cart',
                 customer_first_name: '{{ Auth::user()->name }}',
                 customer_email: '{{ Auth::user()->email }}',
             }),
@@ -198,7 +198,7 @@
                     onSuccess: function(result) {
                         alert('Payment Success!');
                         console.log(result);
-                        window.location.reload();
+                            
                     },
                     onPending: function(result) {
                         alert('Payment Pending...');

@@ -40,6 +40,8 @@
         @include('components.cartnav')
         @elseif(request()->is('dashboardAdmin'))
         @include('components.navbar')
+        @elseif(request()->is('profile'))
+        @include('components.navbar')
         @elseif (request()->is('productDetail/*'))
         @include('components.navbar')
         @elseif (request()->is('checkout'))

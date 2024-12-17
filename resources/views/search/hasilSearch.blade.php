@@ -17,7 +17,7 @@
                         <a href="/productDetail/{{ $product->id }}">
                             <div>
                                 <img class="object-cover h-[300px] w-[300px]"
-                                     src="{{ asset('products/' . $product->image) }}"
+                                     src="{{ asset('storage/' . $product->image) }}"
                                      alt="{{ $product->name }}">
                             </div>
                             <div class="grid gap-[10px] px-[10px] py-[29px]">

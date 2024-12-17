@@ -13,10 +13,6 @@
         </div>
     @endif
 
-
-
-
-
     <div class="grid grid-cols-2">
         <div class="col-span-1">
             <div class="grid grid-cols-8">
