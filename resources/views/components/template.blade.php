@@ -49,6 +49,9 @@
         @include('components.checkoutNav')
         @elseif (request()->is('search'))
         @include('components.navbar')
+        @elseif (request()->is('history'))
+        @include('components.navbar')
+        @include('components.historyNav')
 
 
 

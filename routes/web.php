@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\listProdukController;
+use App\Http\Controllers\OrdersHistoryController;
 use App\Http\Controllers\SessioningController;
 use App\Http\Controllers\TransactionController;
 
@@ -33,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('delete_cart/{id}', [CartController::class, 'delete_cart'])->middleware('user_access:customer');
     Route::post('confirm_order', [CartController::class, 'confirm_order'])->middleware('user_access:customer');
     Route::post('/payments', [PaymentController::class, 'create'])->middleware('user_access:customer');
+    Route::get('history', [OrdersHistoryController::class, 'index'])->middleware('user_access:customer');
+
     Route::post('/webhook/midtrans', [PaymentController::class, 'webhook']);
 
     // Route::get('/dashboardCustomer', [ProductController::class, 'index'])->name('dashboardCustomer')->middleware('user_access:customer');

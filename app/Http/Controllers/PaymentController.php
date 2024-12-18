@@ -68,7 +68,6 @@ class PaymentController extends Controller
 
     public function webhook(Request $request)
     {
-        // Midtrans webhook handling
         $serverKey = env('MIDTRANS_SERVER_KEY');
         $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
 
