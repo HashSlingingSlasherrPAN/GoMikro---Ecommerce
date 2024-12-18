@@ -55,6 +55,7 @@
 
     <?php
     $value = $value + $cart->product->price;
+    $product_name = $cart->product->name;
     ?>
     @endforeach
 
@@ -146,19 +147,6 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 @if (Session::has('message_sent'))
@@ -185,7 +173,7 @@
             },
             body: JSON.stringify({
                 price: {{ $value }},
-                item_name: 'Item Cart',
+                item_name: '{{$product_name}}',
                 customer_first_name: '{{ Auth::user()->name }}',
                 customer_email: '{{ Auth::user()->email }}',
             }),

@@ -29,7 +29,7 @@
     <hr>
     <!-- Table Produk -->
     <div>
-        <table class="w-full table-auto border-separate border-spacing-0 overflow-hidden">
+        <table id="category-table" class="w-full table-auto border-separate border-spacing-0 overflow-hidden">
             <thead>
                 <tr>
                     <th class="px-6 py-4 text-left rounded-tl-lg">Jenis Kategori</th>
@@ -64,6 +64,26 @@
         </table>
     </div>
 </div>
-
+<script>
+    $(document).ready(function () {
+        $('#category-table').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "language": {
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ data per halaman",
+                "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ data",
+                "paginate": {
+                    "first": "Pertama",
+                    "last": "Terakhir",
+                    "next": "Berikutnya",
+                    "previous": "Sebelumnya"
+                }
+            }
+        });
+    });
+</script>
 
 @endsection

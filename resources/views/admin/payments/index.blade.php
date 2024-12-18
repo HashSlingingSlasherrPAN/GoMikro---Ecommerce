@@ -12,15 +12,15 @@
         </div>
     @endif
 
-    <table class="min-w-full table-auto border-separate border-spacing-0 overflow-hidden">
+    <table id="paymentsTable" class="min-w-full table-auto border-separate border-spacing-0 overflow-hidden">
         <thead>
             <tr>
-                <th class="px-4 py-2 rounded-tl-lg">#</th>
-                <th class="px-4 py-2">Nama Customer</th>
-                <th class="px-4 py-2">Nama Item</th>
-                <th class="px-4 py-2">Harga</th>
-                <th class="px-4 py-2">Status</th>
-                <th class="px-4 py-2 rounded-tr-lg">Aksi</th>
+                <th class="text-center px-4 py-2 rounded-tl-lg">#</th>
+                <th class="text-center px-4 py-2">Nama Customer</th>
+                <th class="text-center px-4 py-2">Nama Item</th>
+                <th class="text-center px-4 py-2">Harga</th>
+                <th class="text-center px-4 py-2">Status</th>
+                <th class="text-center px-4 py-2 rounded-tr-lg">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -50,4 +50,28 @@
         </tbody>
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#paymentsTable').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "language": {
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ data per halaman",
+                "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ data",
+                "paginate": {
+                    "first": "Pertama",
+                    "last": "Terakhir",
+                    "next": "Berikutnya",
+                    "previous": "Sebelumnya"
+                }
+            }
+        });
+    });
+</script>
 @endsection
+
+
+

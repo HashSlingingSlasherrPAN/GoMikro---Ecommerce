@@ -4,7 +4,7 @@
 
 <!-- Konten Utama -->
 <div class="w-full overflow-x-auto bg-[#fbfbfb] rounded-lg shadow-md">
-    <h1 class="text-3xl font-bold p-6">Tambah Produk Baru</h1>
+    <h1 class="text-3xl font-bold p-6">Tambah Kategori Produk Baru</h1>
     <hr>
     <form action="{{ route('admin.categories.store') }}" method="POST" class="space-y-4">
         @csrf <!-- Token keamanan untuk form -->

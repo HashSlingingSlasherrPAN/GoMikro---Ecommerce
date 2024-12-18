@@ -30,7 +30,7 @@
     <hr>
     <!-- Table Produk -->
     <div>
-        <table class="min-w-full table-auto border-separate border-spacing-0 overflow-hidden">
+        <table id="product-table" class="min-w-full table-auto border-separate border-spacing-0 overflow-hidden">
             <thead>
                 <tr>
                     <th class="px-4 py-2 rounded-tl-lg">Nama</th>
@@ -76,9 +76,27 @@
         </table>
     </div>
 
-    {{-- <!-- Button Tambah Produk -->
-    <a href="{{ route('admin.products.create') }}">Tambah Produk</a> --}}
 </div>
-
+<script>
+    $(document).ready(function () {
+        $('#product-table').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "language": {
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ data per halaman",
+                "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ data",
+                "paginate": {
+                    "first": "Pertama",
+                    "last": "Terakhir",
+                    "next": "Berikutnya",
+                    "previous": "Sebelumnya"
+                }
+            }
+        });
+    });
+</script>
 
 @endsection

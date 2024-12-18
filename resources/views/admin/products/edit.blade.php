@@ -54,16 +54,13 @@
             <div>
                 <label for="categories" class="block font-medium mb-2">Kategori Produk</label>
                 <select 
-                    name="categories[]" 
-                    id="categories" 
-                    multiple
+                    id="category" 
+                    name="category_id" 
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#02b18a] active:border-[#02b18a] focus:outline-none"
                     required>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" 
-                            @if($product->categories->contains($category->id)) selected @endif>
-                            {{ $category->name }}
-                        </option>
+                    <option value="" disabled selected>Pilih kategori produk</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
