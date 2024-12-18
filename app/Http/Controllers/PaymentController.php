@@ -18,7 +18,7 @@ class PaymentController extends Controller
         Config::$isProduction = env('MIDTRANS_IS_PRODUCTION', false);
         Config::$isSanitized = true;
         Config::$is3ds = true;
-        
+
 
 
         $order_id = Str::uuid();
@@ -87,13 +87,4 @@ class PaymentController extends Controller
         return response()->json(['message' => 'Payment status updated']);
     }
 
-    public function clearCart(Request $request)
-    {
-        $customerEmail = $request->customer_email;
-
-        // Hapus produk di keranjang berdasarkan email
-        Payment::where('customer_email', $customerEmail)->delete();
-
-        return response()->json(['message' => 'Cart cleared successfully']);
-    }  
 }

@@ -31,7 +31,7 @@
 
         </div>
         <div class="col-span-1">
-            <p>                        <h1>{{ $cart->product->price }}</h1>
+            <p>                        <h1>Rp.{{ number_format($cart->product->price, 0, ',', '.') }}</h1>
             </p>
 
 
@@ -66,7 +66,7 @@
 
             <div class="col-span-3 flex flex-col justify-center items-center">
                 <h1 class="text-sm font-medium">Total Harga:</h1>
-                <h1 class="font-medium text-[#00ac73] text-[2rem]">Rp. {{ $value }}</h1>
+                <h1 class="font-medium text-[#00ac73] text-[2rem]">Rp. {{ number_format($value, 0, ',', '.') }} </h1>
               </div>
           <!-- Left Section: Form -->
           <div class="col-span-9">

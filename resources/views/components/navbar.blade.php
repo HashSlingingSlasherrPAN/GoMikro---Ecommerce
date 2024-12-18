@@ -1,4 +1,4 @@
-<nav class="px-[24px] py-[10px] z-99 top-[0] bg-[#fbfbfb] sticky shadow-lg">
+<nav class="px-[24px] py-[10px] z-99 top-[0] bg-[#fbfbfb] sticky ">
     <div class="flex items-center justify-between">
         <a href="{{ url('/customer/dashboardCustomer') }}"><img class="h-[40px]" src="{{ asset('images/navLogo.png') }}" alt="Logo GoMikro"></a>
         <div class="border-[2px] items-center w-[420px] grid grid-cols-12 bg-white rounded-lg py-[5px] px-[5px]">
@@ -7,7 +7,7 @@
             </div>
             <div class="col-span-10">
                 <form action="{{ route('search') }}" method="GET">
-                    <input class="w-full py-[5px] px-[10px] rounded-lg" type="search" placeholder="Cari barang di GoMikro" name="query" value="{{ old('query') }}">
+                    <input class="w-full focus:outline-none py-[5px] px-[10px]  rounded-lg" type="search" placeholder="Cari barang di GoMikro" name="query" value="{{ old('query') }}">
                 </form>
             </div>
         </div>

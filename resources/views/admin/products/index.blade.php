@@ -9,20 +9,20 @@
         <h1 class="text-3xl font-bold p-6">Daftar Produk</h1>
 
         <!-- Gambar dengan efek hover -->
-        <a 
-            href="{{ route('admin.products.create') }}" 
+        <a
+            href="{{ route('admin.products.create') }}"
             class="p-5 mr-5 group"
         >
             <!-- Gambar Hover -->
-            <img 
-                src="{{ asset('images/addhover.png') }}" 
-                alt="Tambah Produk Hover" 
+            <img
+                src="{{ asset('images/addhover.png') }}"
+                alt="Tambah Produk Hover"
                 class="w-10 h-10 group-hover:hidden"
             >
             <!-- Gambar Default -->
-            <img 
-                src="{{ asset('images/add.png') }}" 
-                alt="Tambah Produk" 
+            <img
+                src="{{ asset('images/add.png') }}"
+                alt="Tambah Produk"
                 class="w-10 h-10 hidden group-hover:block"
             >
         </a>
@@ -61,13 +61,13 @@
                         </td>
                         <td class="flex justify-center items-center gap-6 py-5">
                             <!-- Tombol Edit -->
-                            <a href="{{ route('admin.products.edit', $product) }}" class="text-blue-500 hover:scale-110 transition-transform duration-300">Edit</a>
-                        
+                            <a href="{{ route('admin.products.edit', $product) }}" class="text-blue-500 hover:scale-110 transition-transform duration-300"><img class="w-[40px] h-[40px]" src="{{ asset('images/editBlue.png') }}" alt=""></a>
+
                             <!-- Tombol Hapus -->
                             <form action="{{ route('admin.products.destroy', $product) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-500 hover:scale-110 transition-transform duration-300">Hapus</button>
+                                <button type="submit" class="text-red-500 hover:scale-110 transition-transform duration-300"><img class="w-[40px] h-[40px]" src="{{ asset('images/deleteRed.png') }}" alt=""></button>
                             </form>
                         </td>
                     </tr>

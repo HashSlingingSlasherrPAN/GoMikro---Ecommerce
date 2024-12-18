@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="admin-dashboard">
-        <nav class="px-[24px] py-[10px]  top-[0]  bg-[#fbfbfb] text-black sticky z-20 shadow-md">
+        <nav class="px-[24px] py-[10px]  top-[0]  bg-[#fbfbfb] text-black sticky z-20 ">
             <div class="flex items-center justify-between ">
                 <a class="" href=""><img class="h-[40px]" src="{{asset('images/navLogo.png')}}" alt="Logo GoMikro"></a>
                 <div class="border-[2px] items-center w-[420px]  grid grid-cols-12 bg-white rounded-lg py-[5px] px-[5px]">
@@ -77,34 +77,41 @@
         <!-- Sidebar -->
         <div class="admin-dashboard flex">
             <!-- Sidebar -->
-            <aside id="sidebar" class="bg-[#fbfbfb] w-[230px] h-screen  fixed top-19 left-0 z-10 ">
-                <div class="p-4">
-                    <ul class="space-y-6 text-white">
-                        <li class="group">
-                            <a href="{{route('dashboardAdmin')}}" class="text-[#7c808d] h-[35px] py-1 px-4 block rounded-md hover:text-[#02b18a] hover:bg-[#f0f3f7]">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="group">
-                            <a href="{{route('admin.payments.index')}}" class="text-[#7c808d] h-[35px] py-1 px-4 block rounded-md hover:text-[#02b18a] hover:bg-[#f0f3f7]" >
-                                Daftar Pesanan
-                            </a>
-                        </li>
+          <aside id="sidebar" class="bg-[#fbfbfb] w-[230px] h-screen fixed top-19 left-0 z-10">
+    <div class="p-4">
+        <ul class="space-y-6 text-white">
+            <li class="group">
+                <a href="{{route('dashboardAdmin')}}"
+                    class="text-[#7c808d] h-[35px] py-1 px-4 block rounded-md hover:text-[#02b18a] hover:bg-[#f0f3f7]
+                    {{ request()->routeIs('dashboardAdmin') ? 'bg-[#f0f3f7] text-[#02b18a]' : '' }}">
+                    Dashboard
+                </a>
+            </li>
+            <li class="group">
+                <a href="{{route('admin.payments.index')}}"
+                    class="text-[#7c808d] h-[35px] py-1 px-4 block rounded-md hover:text-[#02b18a] hover:bg-[#f0f3f7]
+                    {{ request()->routeIs('admin.payments.index') ? 'bg-[#f0f3f7] text-[#02b18a]' : '' }}">
+                    Daftar Pesanan
+                </a>
+            </li>
+            <li class="group">
+                <a href="{{ route('admin.products.index') }}"
+                    class="text-[#7c808d] h-[35px] py-1 px-4 block rounded-md hover:text-[#02b18a] hover:bg-[#f0f3f7]
+                    {{ request()->routeIs('admin.products.index') ? 'bg-[#f0f3f7] text-[#02b18a]' : '' }}">
+                    Daftar Produk
+                </a>
+            </li>
+            <li class="group">
+                <a href="{{route('admin.categories.index')}}"
+                    class="text-[#7c808d] h-[35px] py-1 px-4 block rounded-md hover:text-[#02b18a] hover:bg-[#f0f3f7]
+                    {{ request()->routeIs('admin.categories.index') ? 'bg-[#f0f3f7] text-[#02b18a]' : '' }}">
+                    Kategori Produk
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>
 
-                        <li class="group">
-                            <a href="{{ route('admin.products.index') }}" class="text-[#7c808d] h-[35px] py-1 px-4 block rounded-md hover:text-[#02b18a] hover:bg-[#f0f3f7]">
-                                Daftar Produk
-                            </a>
-                        </li>
-                        <li class="group">
-                            <a href="{{route('admin.categories.index')}}" class="text-[#7c808d] h-[35px] py-1 px-4 block rounded-md hover:text-[#02b18a] hover:bg-[#f0f3f7]">
-                                Kategori Produk
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-            </aside>
         
             <!-- Content -->
             <main class="flex-grow p-6 bg-white ml-[230px]">

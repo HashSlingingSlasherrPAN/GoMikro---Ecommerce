@@ -22,41 +22,13 @@
 
             </div>
             <div>
-                <div class="grid gap-4 p-4 rounded-lg my-[20px] border border-gray-300 max-w-sm mx-auto">
-                    <div class="flex justify-between items-center">
-                      <label for="quantity-input" class="text-sm font-medium text-gray-700">Jumlah:</label>
-                      <div class="flex items-center space-x-2">
-                        <button
-                          type="button"
-                          id="decrement-button"
-                          class="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center focus:ring-1 focus:ring-[#02b18a]"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2" class="w-3 h-3 text-gray-700">
-                            <path stroke="currentColor" stroke-width="2" d="M1 1h16" />
-                          </svg>
-                        </button>
-                        <input
-                          type="text"
-                          id="quantity-input"
-                          class="w-12 h-6 text-center text-sm border border-gray-300 rounded focus:ring-1 focus:ring-[#02b18a] focus:border-[#02b18a]"
-                          value="1"
-                          required
-                        />
-                        <button
-                          type="button"
-                          id="increment-button"
-                          class="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center focus:ring-1 focus:ring-[#02b18a]"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18" class="w-3 h-3 text-gray-700">
-                            <path stroke="currentColor" stroke-width="2" d="M9 1v16M1 9h16" />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
+                <div class="grid gap-4 p-4 rounded-lg my-[20px] b max-w-sm mx-auto">
+
+
                     <a class="w-full py-2 text-sm text-center font-semibold text-white bg-[#02b18a] rounded hover:bg-[#02b18a] transition" href="{{url('add_cart',$data->id)}}">
                         Masukan Keranjang
                     </a>
-                  </div>
+
 
             </div>
 

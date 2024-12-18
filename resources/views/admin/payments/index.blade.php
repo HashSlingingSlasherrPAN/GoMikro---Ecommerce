@@ -41,7 +41,7 @@
                                 <option value="paid" {{ $payment->status == 'paid' ? 'selected' : '' }}>Paid</option>
                                 <option value="failed" {{ $payment->status == 'failed' ? 'selected' : '' }}>Failed</option>
                             </select>
-                            <button type="submit" class="px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-600 transition">Ubah</button>
+                            <button type="submit" class="px-4 py-1 text-white transition"><img class="w-[48px] h-[48px]" src="{{ asset('images/save.png') }}" alt=""></button>
                         </div>
                     </form>
                 </td>

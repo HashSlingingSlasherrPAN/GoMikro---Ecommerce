@@ -8,16 +8,16 @@
 
          <!-- Button Tambah Produk -->
         <a href="{{ route('admin.categories.create') }}" class="fixxed p-5 mr-5 group">
-            
-            <img 
-                src="{{ asset('images/addhover.png') }}" 
-                alt="Tambah Kategori Hover" 
+
+            <img
+                src="{{ asset('images/addhover.png') }}"
+                alt="Tambah Kategori Hover"
                 class="w-10 h-10 group-hover:hidden"
             >
 
-            <img 
-                src="{{ asset('images/add.png') }}" 
-                alt="Tambah Kategori" 
+            <img
+                src="{{ asset('images/add.png') }}"
+                alt="Tambah Kategori"
                 class="w-10 h-10 hidden group-hover:block"
             >
 
@@ -25,7 +25,7 @@
 
 
     </div>
-    
+
     <hr>
     <!-- Table Produk -->
     <div>
@@ -46,7 +46,7 @@
                         <td class="px-6 py-4 text-center flex justify-center items-center gap-6">
                             <!-- Tombol Edit -->
                             <a href="{{ route('admin.categories.edit', $category) }}" class="text-blue-500 hover:scale-110 transition-transform duration-300">
-                                Edit
+                                <img src="{{ asset('images/editBlue.png') }}" class="w-[40px] h-[40px]" alt="">
                             </a>
 
                             <!-- Tombol Hapus -->
@@ -54,7 +54,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-500 hover:scale-110 transition-transform duration-300">
-                                    Hapus
+                                    <img class="w-[40px] h-[40px]" src="{{ asset('images/deleteRed.png') }}" alt="">
                                 </button>
                             </form>
                         </td>

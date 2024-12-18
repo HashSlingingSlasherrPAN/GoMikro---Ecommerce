@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('categories', CategoryController::class)->middleware('user_access:admin');
         Route::resource('orders', OrderController::class)->middleware('user_access:admin');
         Route::resource('payments', AdminPaymentController::class)->middleware('user_access:admin');
-        Route::post('payments/{id}/update-status', [AdminPaymentController::class, 'updateStatus'])->name('payments.update-status')->middleware('user_access:admin');
+        Route::post('payments/{dian}/update-status', [AdminPaymentController::class, 'updateStatus'])->name('payments.update-status')->middleware('user_access:admin');
     });
 });
 
